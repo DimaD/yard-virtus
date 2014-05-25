@@ -1,0 +1,21 @@
+# Ignore bundler config and scripts/binaries
+/.bundle
+/.bin
+
+# Ignore YARD run-off
+.yardoc/
+
+# Ignore automatically generated documentation
+# for sample project
+example/doc
+
+.DS_Store
+*~
+*#
+*.o
+*.dylib
+*.a
+*.so
+.#*
+*.rbc
+.rvmrc
