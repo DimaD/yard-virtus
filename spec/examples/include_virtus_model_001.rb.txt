@@ -1,0 +1,15 @@
+class A
+  include Model
+end
+
+class ModelA
+  include Virtus.model
+end
+
+class ModelB
+  include Virtus.value_object
+end
+
+class ModelC
+  include Virtus.model(mass_assignmet: false)
+end
