@@ -12,6 +12,12 @@ class User
   attribute :addresses, Hash[Symbol => Address]
 
   attribute :unique_id, String, :writer => :private
+
+  # keeps extracted type if comment is present
+  attribute :email, Email
+
+  # preserves private attribute if comment is present
+  attribute :unique_uuid, String, :writer => :private
 end
 
 class Page

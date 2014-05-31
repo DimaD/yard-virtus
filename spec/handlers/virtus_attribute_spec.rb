@@ -28,4 +28,12 @@ describe VirtusYARD::Handlers::VirtusAttribute, type: :handler do
   it "parses and marks attributes with private writers" do
     expect(YARD::Registry.at("User#unique_id=")).to have_private_writer_api
   end
+
+  it "parses type of attribute with attached docstring" do
+    expect(YARD::Registry.at("User#email")).to have_return_type("Email")
+  end
+
+  it "parses information about private writers with attached docstring" do
+    expect(YARD::Registry.at("User#unique_uuid=")).to have_private_writer_api
+  end
 end

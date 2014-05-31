@@ -22,7 +22,7 @@ module VirtusYARD
       def register_attribute!(mobject, type)
         yard_mobject = mobject.yard_method_object(namespace)
 
-        register(yard_mobject)
+        register_preserving_tags!(yard_mobject)
         attributes_data_for(mobject.attr_name)[type] = yard_mobject
       end
 
@@ -32,6 +32,24 @@ module VirtusYARD
 
       def virtus_model?
         namespace[:supports_virtus_attributes] == true
+      end
+
+      # When you register an object it can get assigned docstring which
+      # followed statement which was handled. If such a docstring exists it
+      # can result in removal of previously extracted tags like `@return` and
+      # `@private` as well as default values. To prevent it we restore all
+      # tags which disappeared after registration.
+      #
+      # Do you love uncontrolled mutations as much as I do?
+      def register_preserving_tags!(object)
+        tags_before_registration = object.tags
+
+        register(object)
+
+        lost_tags = tags_before_registration - object.tags
+        if lost_tags.size > 0
+          object.add_tag(*lost_tags)
+        end
       end
     end
   end
