@@ -2,6 +2,13 @@ require "spec_helper"
 
 describe VirtusYARD::CodeObjects::AttributeWriter do
   subject { described_class.new(:title, "String", true) }
+  before :each do
+    # All YARD::CodeObjects::* objects are added to
+    # registry on creation which causes conflicts in
+    # this test.
+    YARD::Registry.clear
+  end
+
 
   it "has #attr_name" do
     expect(subject.attr_name).to eq(:title)
