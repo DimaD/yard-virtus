@@ -19,3 +19,4 @@ example/doc
 .#*
 *.rbc
 .rvmrc
+tmp/
