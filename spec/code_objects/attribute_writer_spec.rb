@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe VirtusYARD::CodeObjects::AttributeWriter do
-  subject { described_class.new(:title, "String") }
+  subject { described_class.new(:title, "String", true) }
 
   it "has #attr_name" do
     expect(subject.attr_name).to eq(:title)
@@ -39,6 +39,30 @@ describe VirtusYARD::CodeObjects::AttributeWriter do
       param_tags = subject.tags(:param).select { |t| t.name == "value" }
 
       expect(param_tags).not_to be_empty
+    end
+
+    context "when writer visibility is not specified" do
+      let(:writer) { described_class.new(:title, "String") }
+
+      it "does not have @private tag" do
+        expect(subject.tags(:private)).to be_empty
+      end
+    end
+
+    context "when writer is public" do
+      let(:writer) { described_class.new(:title, "String", false) }
+
+      it "does not have @private tag" do
+        expect(subject.tags(:private)).to be_empty
+      end
+    end
+
+    context "when writer is private" do
+      let(:writer) { described_class.new(:title, "String", true) }
+
+      it "has @private tag" do
+        expect(subject.tags(:private)).to have(1).item
+      end
     end
   end
 end

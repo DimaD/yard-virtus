@@ -8,6 +8,7 @@ module VirtusYARD
       # @params [YARD::Parser::Ruby::MethodCallNode] ast
       def initialize(ast)
         @ast = ast
+        @options = Options.new(parameters[2])
       end
 
       def readable?
@@ -18,8 +19,16 @@ module VirtusYARD
         true
       end
 
+      def has_private_writer?
+        options[:writer] == :private
+      end
+
       def attr_name
         parameters.first.jump(:ident).first.to_sym
+      end
+
+      def type
+        Type.new(type_param).yard_type_string
       end
 
       def attribute_reader
@@ -27,19 +36,11 @@ module VirtusYARD
       end
 
       def attribute_writer
-        CodeObjects::AttributeWriter.new(attr_name, type)
-      end
-
-      def type
-        Type.new(type_param).yard_type_string
-      end
-
-      # @param [YARD::CodeObjects::NamespaceObject] namespace
-      def method_object_in_ns(namespace)
-        YARD::CodeObjects::MethodObject.new(namespace, attr_name, :instance)
+        CodeObjects::AttributeWriter.new(attr_name, type, has_private_writer?)
       end
 
       protected
+      attr_reader :options
 
       def parameters
         ast.parameters(false)

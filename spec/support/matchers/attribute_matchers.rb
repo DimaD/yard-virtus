@@ -31,3 +31,9 @@ RSpec::Matchers.define :define_writable_attribute do |attr_name|
     "define writable attribute #{attr_name}"
   end
 end
+
+RSpec::Matchers.define :have_private_writer_api do
+  match do |method_object|
+    expect(method_object.tags(:private).size).to be > 0
+  end
+end

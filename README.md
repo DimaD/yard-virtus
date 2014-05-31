@@ -6,3 +6,8 @@ This gem helps to generate YARD documentation for classes built using [Virtus](h
 ## Work in Progress
 
 This is a very early prototype which is not yet ready to be used for any real project.
+
+## Notice
+
+This library uses eval with $SAFE level 3 to evaluate list of options in
+`attribute` declarations.

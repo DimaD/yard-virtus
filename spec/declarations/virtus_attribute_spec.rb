@@ -58,4 +58,8 @@ describe VirtusYARD::Declarations::VirtusAttribute do
     it { expect(subject.attr_name).to eq(:locations) }
     it { expect(subject.type).to eq("Hash{Symbol => Address}") }
   end
+
+  example "attribute :unique_id, String, :writer => :private" do
+    it { expect(subject).to have_private_writer }
+  end
 end

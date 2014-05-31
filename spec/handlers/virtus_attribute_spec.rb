@@ -24,4 +24,8 @@ describe VirtusYARD::Handlers::VirtusAttribute, type: :handler do
   it "parses attribute with collection map type" do
     expect(YARD::Registry.at("User#addresses")).to have_return_type("Hash{Symbol => Address}")
   end
+
+  it "parses and marks attributes with private writers" do
+    expect(YARD::Registry.at("User#unique_id=")).to have_private_writer_api
+  end
 end
