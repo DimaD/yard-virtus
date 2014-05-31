@@ -14,4 +14,9 @@ describe VirtusYARD::Handlers::IncludeVirtusModel, type: :handler do
   it "processes model declaration with parameters" do
     expect(YARD::Registry.at(:ModelC).instance_mixins).to include(P("Virtus.model"))
   end
+
+  it "marks model namespace as supporting virtus attributes" do
+    namespace = YARD::Registry.at(:ModelA)
+    expect(namespace[:supports_virtus_attributes]).to be_true
+  end
 end

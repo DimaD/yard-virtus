@@ -11,6 +11,8 @@ module VirtusYARD
         declaration.module_proxies_in_ns(namespace).each do |proxy|
           namespace.mixins(scope).unshift(proxy)
         end
+
+        namespace[:supports_virtus_attributes] = true
       end
 
       protected
