@@ -10,14 +10,6 @@ end
 
 require File.join(_dir, "..", "lib", "virtus-yard")
 
-# The global {YARD::Logger} instance
-#
-# @return [YARD::Logger] the global {YARD::Logger} instance
-# @see YARD::Logger
-def log
-  YARD::Logger.instance
-end
-
 # Shortcut for creating a YARD::CodeObjects::Proxy via a path
 #
 # @see YARD::CodeObjects::Proxy
@@ -38,7 +30,7 @@ RSpec.configure do |config|
   config.include VirtusYARD::Spec::HandlerHelpers, :type => :handler
   config.include VirtusYARD::Spec::ParsingHelpers
 
-  config.before(:each) { log.io = StringIO.new }
+  config.before(:all) { YARD::Logger.instance(StringIO.new) }
 end
 
 def parse_file!(file, thisfile = __FILE__, log_level = log.level, ext = '.rb.txt')
