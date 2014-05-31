@@ -33,6 +33,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.color = true
 
   config.include VirtusYARD::Spec::HandlerHelpers, :type => :handler
   config.include VirtusYARD::Spec::ParsingHelpers
