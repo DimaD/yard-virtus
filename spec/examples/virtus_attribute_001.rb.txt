@@ -1,0 +1,31 @@
+class Address
+  attribute :city, String
+end
+
+class User
+  include Virtus.model
+
+  attribute :name, String
+  attribute :age, Integer
+
+  attribute :friends, Array[User]
+  attribute :addresses, Hash[Symbol => Address]
+
+  attribute :unique_id, String, :writer => :private
+end
+
+class Page
+  attribute :title, String
+
+  # default from a singleton value (integer in this case)
+  attribute :views, Integer, :default => 0
+
+  # default from a singleton value (boolean in this case)
+  attribute :published, Boolean, :default => false
+
+  # default from a callable object (proc in this case)
+  attribute :slug, String, :default => lambda { |page, attribute| page.title.downcase.gsub(' ', '-') }
+
+  # default from a method name as symbol
+  attribute :editor_title, String,  :default => :default_editor_title
+end
