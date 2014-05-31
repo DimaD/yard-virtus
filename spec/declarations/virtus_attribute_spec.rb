@@ -62,4 +62,12 @@ describe VirtusYARD::Declarations::VirtusAttribute do
   example "attribute :unique_id, String, :writer => :private" do
     it { expect(subject).to have_private_writer }
   end
+
+  example "attribute :unique_id, String, writer: :private" do
+    it { expect(subject).to have_private_writer }
+  end
+
+  example "attribute :unique_id, String, :writer => :private, :a => :b" do
+    it { expect(subject).to have_private_writer }
+  end
 end
