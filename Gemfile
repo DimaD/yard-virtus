@@ -6,6 +6,8 @@ gem "yard"
 
 group :development do
   gem "rspec"
+  gem "guard-rspec", require: false
+
   gem "rake"
   gem "pry"
 
