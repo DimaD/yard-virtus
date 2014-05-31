@@ -1,12 +1,13 @@
 source "https://rubygems.org"
 
-gem "virtus"
-gem "yard"
-
+gem "virtus", "= 1.0.2"
+gem "yard", "= 0.8.7.4"
 
 group :development do
   gem "rspec"
-  gem "guard-rspec", require: false
+
+  gem "guard-rspec", "~> 4.2.9", require: false
+  gem "terminal-notifier-guard"
 
   gem "rake"
   gem "pry"
