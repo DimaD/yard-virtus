@@ -10,7 +10,7 @@ This gem depends on exact details of implementation of Virtus so it's locked to 
 Add the gem to your Gemfile (inside development or documentation group):
 
 ``` ruby
-  gem "virtus_yard", "= 0.0.1"
+  gem "yard-virtus", "= 0.0.4"
 ```
 
 ## Usage
