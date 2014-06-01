@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 
-require File.expand_path("../lib/virtus_yard/version", __FILE__)
+require File.expand_path("../lib/yard/virtus/version", __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name        = "virtus_yard"
-  gem.version     = VirtusYARD::VERSION
+  gem.name        = "yard-virtus"
+  gem.version     = YARD::Virtus::VERSION
   gem.authors     = ["Dmitry Dzema"]
   gem.email       = ["dimad.ag@gmail.com"]
-  gem.homepage    = "https://github.com/DimaD/virtus_yard"
+  gem.homepage    = "https://github.com/DimaD/yard-virtus"
   gem.summary     = "This library provides handlers to YARD so it can extract information about Virtus attributes like types and visibility"
   gem.description = gem.summary
   gem.license     = "MIT"
