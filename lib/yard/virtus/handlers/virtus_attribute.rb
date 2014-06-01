@@ -32,7 +32,7 @@ module YARD
         end
 
         def virtus_model?
-          namespace[:supports_virtus_attributes] == true
+          namespace.inheritance_tree(true).any? { |n| n[:supports_virtus_attributes] == true }
         end
 
         # When you register an object it can get assigned docstring which

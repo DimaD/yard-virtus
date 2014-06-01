@@ -35,3 +35,31 @@ class Page
   # default from a method name as symbol
   attribute :editor_title, String,  :default => :default_editor_title
 end
+
+class BaseVirtusModel
+  include Virtus.model
+end
+
+class City < BaseVirtusModel
+  attribute :name, String
+end
+
+# Mixin is not defined yet which can
+# happen in real world setup when files are
+# scanned in the order which does not match
+# their dependencies order.
+class District
+  include ModelMixin
+
+  attribute :city, City
+end
+
+module ModelMixin
+  include Virtus.model
+end
+
+class Country
+  include ModelMixin
+
+  attribute :cities, Array[City]
+end
