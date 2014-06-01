@@ -1,4 +1,4 @@
-# virtus_yard
+# yard-virtus
 
 
 This gem helps to generate YARD documentation for classes built using [Virtus](https://github.com/solnic/virtus). It extracts information about attributes, their types and writers so you don't need to specify it manually.
