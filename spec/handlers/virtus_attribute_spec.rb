@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::Handlers::VirtusAttribute, type: :handler do
+describe YARD::Virtus::Handlers::VirtusAttribute, type: :handler do
   before(:all) { parse_file! :virtus_attribute_001 }
 
   it "does not parse attribute if namespace does not include Virtus declaration" do

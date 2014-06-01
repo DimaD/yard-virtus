@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::Declarations::Type do
+describe YARD::Virtus::Declarations::Type do
   def self.example(src, &block)
     c = context "'#{src}'"
     c.let(:ast) { ruby_ast(src) }

@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "lib", "virtus_yard")
+require File.join(File.dirname(__FILE__), "lib", "yard-virtus")
 
 desc "Build documentation for sample code set"
 YARD::Rake::YardocTask.new("example") do |t|

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::Declarations::VirtusAttribute do
+describe YARD::Virtus::Declarations::VirtusAttribute do
   let(:ast) { ruby_ast(declaration) }
   let(:namespace) { YARD::CodeObjects::ClassObject.new(nil, "TemporarySpecClass") }
   let(:subject) { described_class.new(ast) }
@@ -19,11 +19,11 @@ describe VirtusYARD::Declarations::VirtusAttribute do
     it { expect(subject.type).to eq("String") }
 
     it "produces reader method object" do
-      expect(subject.attribute_reader).to be_kind_of(VirtusYARD::CodeObjects::AttributeReader)
+      expect(subject.attribute_reader).to be_kind_of(YARD::Virtus::CodeObjects::AttributeReader)
     end
 
     it "produces writer method object" do
-      expect(subject.attribute_writer).to be_kind_of(VirtusYARD::CodeObjects::AttributeWriter)
+      expect(subject.attribute_writer).to be_kind_of(YARD::Virtus::CodeObjects::AttributeWriter)
     end
   end
 

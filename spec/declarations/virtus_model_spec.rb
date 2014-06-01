@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::Declarations::VirtusModel do
+describe YARD::Virtus::Declarations::VirtusModel do
   let(:ast) { ruby_ast(declaration) }
   let(:namespace) { YARD::CodeObjects::ClassObject.new(nil, "TemporarySpecClass") }
   let(:subject) { described_class.new(ast) }

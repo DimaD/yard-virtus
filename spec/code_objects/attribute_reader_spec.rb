@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::CodeObjects::AttributeReader do
+describe YARD::Virtus::CodeObjects::AttributeReader do
   subject { described_class.new(:title, "String") }
 
   it "has #attr_name" do

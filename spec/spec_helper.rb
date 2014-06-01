@@ -8,7 +8,7 @@ Dir[File.join(_dir, "support", "**", "*.rb")].each do |f|
   require f
 end
 
-require File.join(_dir, "..", "lib", "virtus_yard")
+require File.join(_dir, "..", "lib", "yard-virtus")
 
 # Shortcut for creating a YARD::CodeObjects::Proxy via a path
 #

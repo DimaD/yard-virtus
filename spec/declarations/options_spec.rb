@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::Declarations::Options do
+describe YARD::Virtus::Declarations::Options do
   def self.example(src, &block)
     c = context "'#{src}'"
     # We can not generate AST for `:a => 1` so we wrap it into

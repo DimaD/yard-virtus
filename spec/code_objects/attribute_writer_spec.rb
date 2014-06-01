@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::CodeObjects::AttributeWriter do
+describe YARD::Virtus::CodeObjects::AttributeWriter do
   before :each do
     # All YARD::CodeObjects::* objects are added to
     # registry on creation which causes conflicts in

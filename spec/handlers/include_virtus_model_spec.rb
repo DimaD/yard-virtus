@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VirtusYARD::Handlers::IncludeVirtusModel, type: :handler do
+describe YARD::Virtus::Handlers::IncludeVirtusModel, type: :handler do
   before(:all) { parse_file! :include_virtus_model_001 }
 
   it "processes basic model declaration" do
