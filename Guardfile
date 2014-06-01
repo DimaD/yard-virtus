@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard :rspec do
+guard :rspec, cmd: "bundle exec rspec" do
   watch(%r{^spec/(.+)/.+_spec\.rb$})
 
   watch(%r{^lib/yard/virtus/(.+)/(.+)\.rb$}) { |m| "spec/#{m[1]}/#{m[2]}_spec.rb" }
