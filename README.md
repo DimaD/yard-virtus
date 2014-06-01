@@ -33,8 +33,7 @@ This library is still work in progress and is not recommended for production use
 
 ### TODO
 
-* Detect if class inherits virtus functionality via inheritance or inclusion of
-  other modules.
+* Detect if class gets virtus functionality via inheritance (partially done).
 * Attach documentation about various features inherited from Virtus to namespaces.
 * Extract default values of attributes.
 
