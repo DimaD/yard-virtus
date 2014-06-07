@@ -9,6 +9,8 @@
 # for sample project
 example/doc
 
+doc
+
 .DS_Store
 *~
 *#
