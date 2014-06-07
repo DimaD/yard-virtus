@@ -27,6 +27,18 @@ If you use YARD command line tool use `--plugin` switch like this
  yard --plugin virtus
 ```
 
+### Workaround for UndocumentableError Warnings
+
+Standard YARD mixin handler throws `UndocumentableError` when it encounters
+mixin which uses method call (like `include Virtus.model`). It serves as a warning
+and does not break parsing process but it could be annoying if you have a lot
+of Virtus based models. This gem includes mokey-patch for `YARD::Handlers::Ruby::MixinHandler`.
+It is not loaded by default and you need to do it explicitly in your Rakefile with:
+
+```ruby
+  require "yard/virtus/mixin_handler_monkey_patch"
+```
+
 ## Work in Progress
 
 This library is still work in progress and is not recommended for production use.
