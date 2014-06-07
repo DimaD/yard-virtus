@@ -2,11 +2,12 @@ module YARD
   module Virtus
     module Declarations
       # VirtusModel declaration wraps AST which represents
-      # call to `attribute` method
+      # call to `attribute` method.
+      # It's job is to provide information which documents attribute.
       class VirtusAttribute
         attr_reader :ast
 
-        # @params [YARD::Parser::Ruby::MethodCallNode] ast
+        # @param [YARD::Parser::Ruby::MethodCallNode] ast
         def initialize(ast)
           @ast = ast
           @options = Options.new(parameters[2])
@@ -20,14 +21,19 @@ module YARD
           true
         end
 
+        # Predicate to check if attribute has private writer.
         def has_private_writer?
           options[:writer] == :private
         end
 
+        # Name of the attribute.
+        # @return [Symbol]
         def attr_name
           parameters.first.jump(:ident).first.to_sym
         end
 
+        # Type of the attribute in YARD format.
+        # @return [String]
         def type
           Type.new(type_param).yard_type_string
         end

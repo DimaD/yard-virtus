@@ -1,22 +1,28 @@
 module YARD
   module Virtus
     module Declarations
-      # Type declaration wraps AST which represents
-      # type of Virtus attribute
+      # Type declaration wraps AST which represents type of Virtus attribute.
+      # It's job is to translate AST into type string which YARD can understand.
       #
       # @example
-      #   ast = s(:call, s(:var_ref, s(:const, "Virtus")), :".", s(:ident, "model"))
-      #   d   = VirtusModel.new(ast)
-      #   d.module_proxies_in_ns(ns) # => P("Virtus.model")
+      #     # this is AST for `Array[String]`.
+      #     ast  = s(:aref, s(:var_ref, s(:const, "Array")),
+      #                     s(s(:var_ref, s(:const, "String")), false))
       #
+      #     type = YARD::Virtus::Declarations::Type.new(ast)
+      #     type.yard_type_string # => "Array<String>"
       class Type
         attr_reader :ast
 
-        # @params [YARD::Parser::Ruby::ReferenceNode, YARD::Parser::Ruby::AstNode] ast
+        # @param [YARD::Parser::Ruby::ReferenceNode, YARD::Parser::Ruby::AstNode] ast
         def initialize(ast)
           @ast = ast
         end
 
+        # Get type string for provided AST.
+        #
+        # @return [String] if provided AST can be transformed into type
+        # @return [nil] if can not transform AST into type string
         def yard_type_string
           if association?(ast)
             yard_type_from_association(ast)
